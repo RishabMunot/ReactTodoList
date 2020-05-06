@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 function App() {
-  var [todos, setTodo] = useState(["Buy Milk"]);
+  var [todos, setTodo] = useState([]);
 
   var [state, setState] = useState("");
 
@@ -11,9 +11,8 @@ function App() {
   }
 
   function addTodo() {
-    console.log(todos);
-
-    setTodo(prevValue => prevValue.push(state));
+    setTodo(prev => [...prev, state]);
+    setState("");
   }
 
   return (
@@ -29,9 +28,9 @@ function App() {
       </div>
       <div>
         <ul>
-          {todos.map(element => {
-            return <li>{element}</li>;
-          })}
+          {todos.map(element => (
+            <li>{element}</li>
+          ))}
         </ul>
       </div>
     </div>
